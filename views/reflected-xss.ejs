@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflected XSS - Vulnerable Lab</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .form-wrapper { max-width: 600px; margin: 40px auto; }
+        .info-box { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; border-radius: 4px; margin-top: 20px; }
+        .danger-box { background: #f8d7da; border-left: 4px solid #dc3545; padding: 15px; border-radius: 4px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="form-wrapper">
+            <h1 class="mb-3 text-danger">Reflected XSS Vulnerability</h1>
+
+            <% if (message) { %>
+                <div class="alert alert-info">
+                    <%- message %>  <!-- VULNERABILITY: Not escaped! -->
+                </div>
+            <% } %>
+
+            <form action="/reflected-xss" method="GET">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Enter your name:</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+            <div class="danger-box">
+                <strong><i class="fas fa-exclamation-triangle"></i> VULNERABLE CODE:</strong>
+                <pre class="mt-2 mb-0 bg-dark text-light p-3 rounded"><code>&lt;%- message %&gt;  <!-- NOT escaped - XSS possible! --></code></pre>
+            </div>
+
+            <div class="info-box">
+                <strong><i class="fas fa-lightbulb"></i> Try These Payloads:</strong>
+                <ul class="mb-0 mt-2">
+                    <li><code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></li>
+                    <li><code>&lt;img src=x onerror="alert(document.cookie)"&gt;</code></li>
+                    <li><code>&lt;svg onload="alert('XSS')"&gt;</code></li>
+                    <li><code>&lt;iframe src="javascript:alert('XSS')"&gt;</code></li>
+                </ul>
+            </div>
+
+            <p class="mt-3"><a href="/">← Back to Home</a></p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

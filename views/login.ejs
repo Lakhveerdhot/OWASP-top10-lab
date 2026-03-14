@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Vulnerable Lab</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .form-wrapper { max-width: 420px; margin: 40px auto; }
+        .test-accounts { margin-top: 1.5rem; }
+    </style>
+</head>
+<body>
+        <div class="app-container">
+        <div class="form-wrapper">
+            <h1 class="mb-3">Login</h1>
+
+            <% if (error) { %>
+                <div class="alert alert-danger"><%= error %></div>
+            <% } %>
+
+            <form action="/login" method="POST">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 mb-3">Login</button>
+            </form>
+
+            <p class="text-center">Don't have an account? <a href="/register">Register here</a></p>
+
+            <div class="test-accounts card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">Test Accounts</h5>
+                    <ul class="mb-0">
+                        <li><code>alice</code> / <code>alice123</code></li>
+                        <li><code>bob</code> / <code>bob123</code></li>
+                        <li><code>admin</code> / <code>admin123</code></li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="mt-3"><a href="/">← Back to Home</a></p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

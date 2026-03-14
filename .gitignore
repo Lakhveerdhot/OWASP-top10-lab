@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Database files
+db/*.sqlite
+db/*.sqlite3
+
+# Exported data (contains user info - keep private!)
+data/database_export.json
+
+# Environment variables
+.env
+.env.local
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build files
+dist/
+build/
+
+# Testing
+coverage/
+.nyc_output/
+

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Fetch - Vulnerable Lab</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: monospace;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .warning {
+            margin: 20px 0;
+            padding: 10px;
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-radius: 4px;
+            color: #856404;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+        .home-link {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <h1>URL Fetch</h1>
+
+    <form action="/fetch" method="GET">
+        <div class="form-group">
+            <label for="url">URL to fetch:</label>
+            <input type="text" id="url" name="url" 
+                   placeholder="http://example.com"
+                   value="<%= typeof url !== 'undefined' ? url : '' %>"
+                   required>
+        </div>
+        <button type="submit">Fetch URL</button>
+    </form>
+
+    <div class="warning">
+        ⚠️ This demo does not validate URL (SSRF vulnerability)
+    </div>
+
+    <% if (typeof result !== 'undefined') { %>
+        <div class="result">
+<%= result %>
+        </div>
+    <% } %>
+
+    <div class="home-link">
+        <a href="/">← Back to Home</a>
+    </div>
+</body>
+</html>
