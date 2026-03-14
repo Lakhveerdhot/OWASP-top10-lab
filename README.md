@@ -1,7 +1,5 @@
 # OWASP Top 10 Vulnerability Lab
 
-![Vulnerable Lab](https://img.shields.io/badge/Purpose-Education%20Only-red) ![Node.js](https://img.shields.io/badge/Node.js-v18+-green)
-
 **A professional, intentionally vulnerable web application for learning OWASP Top 10 vulnerabilities and penetration testing techniques.**
 
 ## ⚠️ Disclaimer
@@ -30,7 +28,6 @@ This lab is designed to help you:
 ### Installation
 
 ```bash
-# Clone or download the project
 cd owasp_top10
 
 # Install dependencies
